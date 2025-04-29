@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom'
 import Home from './pages/Home';
 import CreatePet from './pages/CreatePet';
 import DeletePet from './pages/DeletePet';
-import ShowPet from './pages/DeletePet';
+import ShowPet from './pages/ShowPet';
 import UpdatePet from './pages/UpdatePet';
 
 
