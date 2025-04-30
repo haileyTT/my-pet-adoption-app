@@ -32,7 +32,7 @@ const DeletePet = () => {
           <Spinner />
         ) : (
           <div className='flex flex-col border-2 p-4 w-fit rounded-xl'>
-            <h3 className='flex flex-col items-center p-8'>Are you sure you wnat to delete this pet?</h3>
+            <h3 className='flex flex-col items-center p-8'>Are you sure you want to delete this pet?</h3>
             <button
               onClick={handleDeletePet}
               className='p-4 m-8 w-full'>
