@@ -17,7 +17,7 @@ app.use(cors());
 // route for default GET
 app.get('/', (request, response) => {
     console.log(request);
-    return response.status(234).send('get working successfully');
+    return response.status(234).send('server listening');
 });
 
 app.use('/pets', petsRoute);

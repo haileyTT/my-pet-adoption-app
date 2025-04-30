@@ -29,14 +29,14 @@ const UpdatePet = () => {
   }, [id])
 
   // function to update the current pet
-  const handleSavePet = () => {
+  const handleUpdatePet = () => {
     const data = {
       name,
       age,
       breed
     };
     setLoading(true);
-    axios.post(`http://localhost:5555/pets`, data)
+    axios.put(`http://localhost:5555/pets/${id}`, data)
       .then(() => {
         setLoading(false);
         navigate('/');
@@ -79,7 +79,7 @@ const UpdatePet = () => {
                 onChange={(e) => setBreed(e.target.value)}
                 className='border-2 p-4 w-full' />
             </div>
-            <button className='p-2 m-8' onClick={handleSavePet}>
+            <button className='p-2 m-8' onClick={handleUpdatePet}>
               Save
             </button>
           </div>
