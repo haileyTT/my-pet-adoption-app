@@ -9,15 +9,24 @@ const CreatePet = () => {
     const [age, setAge] = useState('');
     const [breed, setBreed] = useState('');
     const [loading, setLoading] = useState('');
+    const [image, setImage] = useState(null);
     const navigate = useNavigate();
     const handleSavePet = () => {
-        const data = {
-            name,
-            age,
-            breed
-        };
+        // const data = {
+        //     name,
+        //     age,
+        //     breed
+        // };
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('age', age);
+        formData.append('breed', breed);
+        if (image) {
+            formData.append('image', image);
+        }
+
         setLoading(true);
-        axios.post(`http://localhost:5555/pets`, data)
+        axios.post(`http://localhost:5555/pets`, formData)
             .then(() => {
                 setLoading(false);
                 navigate('/');
@@ -59,6 +68,15 @@ const CreatePet = () => {
                                 value={breed}
                                 onChange={(e) => setBreed(e.target.value)}
                                 className='border-2 p-4 w-full' />
+                        </div>
+                        <div className='my-4'>
+                            <label className='mr-4 text-xl'>Image</label>
+                            <input
+                                type='file'
+                                accept='image/*'
+                                onChange={(e) => setImage(e.target.files[0])}
+                                className='border-2 p-2'
+                            />
                         </div>
                         <button className='p-2 m-8' onClick={handleSavePet}>
                             Save
