@@ -4,8 +4,13 @@ import mongoose from 'mongoose';
 // import { Pet } from './models/petModel.js';
 import petsRoute from './routes/petsRoute.js';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Middleware for parsing request body
 app.use(express.json());
@@ -21,6 +26,7 @@ app.get('/', (request, response) => {
 });
 
 app.use('/pets', petsRoute);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 mongoose.connect(mongoDBURL)
     .then(() => {
