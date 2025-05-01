@@ -12,11 +12,6 @@ const CreatePet = () => {
     const [image, setImage] = useState(null);
     const navigate = useNavigate();
     const handleSavePet = () => {
-        // const data = {
-        //     name,
-        //     age,
-        //     breed
-        // };
         const formData = new FormData();
         formData.append('name', name);
         formData.append('age', age);
@@ -37,53 +32,56 @@ const CreatePet = () => {
             })
     }
     return (
-        <div className='p-4'>
-            <BackButton />
-            <h1 className='text-3xl my-4'>Create Pet</h1>
-            {
-                loading ? (
-                    <Spinner />
-                ) : (
-                    <div className='flex flex-col border-2 p-4 w-fit rounded-xl'>
-                        <div className='my-4'>
-                            <label className='mr-4 text-xl'>Name</label>
-                            <input
-                                type='text'
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                className='border-2 p-4 w-full' />
+        <div className="flex flex-col justify-center items-center min-h-screen">
+            <div className="flex flex-col items-start p-4 w-fit">
+
+                <BackButton />
+                <h1 className='text-3xl my-4'>Create Pet</h1>
+                {
+                    loading ? (
+                        <Spinner />
+                    ) : (
+                        <div className='flex flex-col border-2 p-4 w-fit rounded-xl'>
+                            <div className='my-4'>
+                                <label className='mr-4 text-xl'>Name</label>
+                                <input
+                                    type='text'
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    className='border-2 p-4 w-full' />
+                            </div>
+                            <div className='my-4'>
+                                <label className='mr-4 text-xl'>Age</label>
+                                <input
+                                    type='text'
+                                    value={age}
+                                    onChange={(e) => setAge(e.target.value)}
+                                    className='border-2 p-4 w-full' />
+                            </div>
+                            <div className='my-4'>
+                                <label className='mr-4 text-xl'>Breed</label>
+                                <input
+                                    type='text'
+                                    value={breed}
+                                    onChange={(e) => setBreed(e.target.value)}
+                                    className='border-2 p-4 w-full' />
+                            </div>
+                            <div className='my-4'>
+                                <label className='mr-4 text-xl'>Image</label>
+                                <input
+                                    type='file'
+                                    accept='image/*'
+                                    onChange={(e) => setImage(e.target.files[0])}
+                                    className='border-2 p-2'
+                                />
+                            </div>
+                            <button className='p-2 m-8' onClick={handleSavePet}>
+                                Save
+                            </button>
                         </div>
-                        <div className='my-4'>
-                            <label className='mr-4 text-xl'>Age</label>
-                            <input
-                                type='text'
-                                value={age}
-                                onChange={(e) => setAge(e.target.value)}
-                                className='border-2 p-4 w-full' />
-                        </div>
-                        <div className='my-4'>
-                            <label className='mr-4 text-xl'>Breed</label>
-                            <input
-                                type='text'
-                                value={breed}
-                                onChange={(e) => setBreed(e.target.value)}
-                                className='border-2 p-4 w-full' />
-                        </div>
-                        <div className='my-4'>
-                            <label className='mr-4 text-xl'>Image</label>
-                            <input
-                                type='file'
-                                accept='image/*'
-                                onChange={(e) => setImage(e.target.files[0])}
-                                className='border-2 p-2'
-                            />
-                        </div>
-                        <button className='p-2 m-8' onClick={handleSavePet}>
-                            Save
-                        </button>
-                    </div>
-                )
-            }
+                    )
+                }
+            </div>
         </div>
     )
 }
