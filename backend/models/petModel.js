@@ -11,7 +11,10 @@ const petSchema = mongoose.Schema(
         },
         age: {
             type: Number
-        }
+        },
+        imageUrl: {
+            type: String, // stores the path like "uploads/xyz.jpg"
+        },
     },
     {
         timestamps: true,
